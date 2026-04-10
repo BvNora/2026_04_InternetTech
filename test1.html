@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mancs Menhely - Örökbefogadás</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigáció */
+        nav {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .logo span {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: white;
+            color: #2c5f2d;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Szekciók általános */
+        section {
+            min-height: 100vh;
+            padding: 100px 2rem 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c5f2d;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ffd700;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Bemutatkozás szekció */
+        #bemutatkozas {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .intro-container {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .intro-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c5f2d;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Állatok szekció */
+        #allatok {
+            background: #fff;
+        }
+
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .animal-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .animal-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            transition: all 0.5s ease;
+        }
+
+        .animal-card.adopted .animal-image {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            position: relative;
+        }
+
+        .animal-card.adopted .animal-image::after {
+            content: '❤️';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .animal-info {
+            padding: 1.5rem;
+        }
+
+        .animal-name {
+            font-size: 1.5rem;
+            color: #2c5f2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .animal-details {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .animal-description {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .adopt-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a7c59 100%);
+            color: white;
+        }
+
+        .adopt-btn:hover:not(:disabled) {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(44, 95, 45, 0.4);
+        }
+
+        .adopt-btn:disabled {
+            background: linear-gradient(135deg, #ff9800 0%, #ffc107 100%);
+            cursor: default;
+        }
+
+        .adopted-badge {
+            display: none;
+            background: #ff9800;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .animal-card.adopted .adopted-badge {
+            display: inline-block;
+        }
+
+        /* Támogatás szekció */
+        #tamogatas {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .support-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .support-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-title {
+            font-size: 1.5rem;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+
+        .support-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-btn {
+            background: linear-gradient(135deg, #ff9800 0%, #ffc107 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .support-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        /* Lábléc */
+        footer {
+            background: linear-gradient(135deg, #1a3a1a 0%, #2c5f2d 100%);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .footer-icon {
+            margin-right: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2);
+        }
+
+        /* Reszponzív */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                min-width: 120px;
+                padding: 1rem;
+            }
+        }
+
+        /* Értesítés */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a7c59 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-icon {
+            font-size: 2rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigáció -->
+    <nav>
+        <div class="container">
+            <div class="logo"><span>🐾</span> Mancs Menhely</div>
+            <div class="nav-links">
+                <a href="#bemutatkozas" class="nav-btn">🏠 Bemutatkozás</a>
+                <a href="#allatok" class="nav-btn">🐕 Állataink</a>
+                <a href="#tamogatas" class="nav-btn">💝 Támogatás</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bemutatkozás szekció -->
+    <section id="bemutatkozas">
+        <div class="intro-container">
+            <div class="intro-icon">🏡</div>
+            <h1 class="section-title">Üdvözöljük a Mancs Menhelyen!</h1>
+            <p class="intro-text">
+                2005 óta működő állatmenhelyünk több száz elhagyott, bántalmazott és gazdátlan 
+                állatnak adott már új esélyt az életre. Önkénteseink és állatorvosaink odaadó 
+                munkájának köszönhetően minden hozzánk került kisállat szerető gondozásban részesül, 
+                amíg meg nem találja végleges otthonát.
+            </p>
+            <p class="intro-text">
+                Hiszünk abban, hogy minden állat megérdemel egy szerető családot. Segítsen nekünk 
+                ebben a küldetésben – fogadjon örökbe, támogasson, vagy legyen önkéntesünk!
+            </p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Örökbefogadott állat</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Év tapasztalat</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Önkéntes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Állatok szekció -->
+    <section id="allatok">
+        <h2 class="section-title">Örökbefogadható Állataink</h2>
+        <div class="animals-grid" id="animalsGrid">
+            <!-- Az állatok JavaScript-tel töltődnek be -->
+        </div>
+    </section>
+
+    <!-- Támogatás szekció -->
+    <section id="tamogatas">
+        <h2 class="section-title">Támogatási Lehetőségek</h2>
+        <div class="support-grid">
+            <div class="support-card">
+                <div class="support-icon">💰</div>
+                <h3 class="support-title">Pénzbeli adomány</h3>
+                <p class="support-text">
+                    Adományával hozzájárul az állatok ellátásához, gyógykezeléséhez és 
+                    a menhely működtetéséhez. Minden forint számít!
+                </p>
+                <button class="support-btn" onclick="showDonation()">Adományozok</button>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">🦴</div>
+                <h3 class="support-title">Tárgyi adomány</h3>
+                <p class="support-text">
+                    Szívesen fogadunk tápot, takarókat, játékokat, ketreceket és egyéb 
+                    állatellátáshoz szükséges eszközöket.
+                </p>
+                <button class="support-btn" onclick="showItems()">Részletek</button>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">🤝</div>
+                <h3 class="support-title">Önkéntesség</h3>
+                <p class="support-text">
+                    Csatlakozzon önkéntes csapatunkhoz! Sétaltatás, takarítás, 
+                    rendezvényszervezés – minden segítség jól jön.
+                </p>
+                <button class="support-btn" onclick="showVolunteer()">Jelentkezem</button>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">🏠</div>
+                <h3 class="support-title">Ideiglenes befogadás</h3>
+                <p class="support-text">
+                    Legyen ideiglenes gazdi! Segítsen egy állatnak családi környezetben 
+                    felkészülni a végleges örökbefogadásra.
+                </p>
+                <button class="support-btn" onclick="showFoster()">Érdekel</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lábléc -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>📍 Címünk</h3>
+                <p>1234 Budapest</p>
+                <p>Állatvédő utca 42.</p>
+                <p>Magyarország</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Elérhetőség</h3>
+                <p><span class="footer-icon">☎️</span> +36 1 234 5678</p>
+                <p><span class="footer-icon">📱</span> +36 30 987 6543</p>
+                <p><span class="footer-icon">✉️</span> info@mancsmenhely.hu</p>
+            </div>
+            <div class="footer-section">
+                <h3>🕐 Nyitvatartás</h3>
+                <p>Hétfő - Péntek: 9:00 - 17:00</p>
+                <p>Szombat: 10:00 - 14:00</p>
+                <p>Vasárnap: Zárva</p>
+            </div>
+            <div class="footer-section">
+                <h3>🌐 Kövessen minket</h3>
+                <p>Kövesse híreinket a közösségi médiában!</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📺</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Mancs Menhely Alapítvány. Minden jog fenntartva. 🐾</p>
+        </div>
+    </footer>
+
+    <!-- Értesítés -->
+    <div class="notification" id="notification">
+        <span class="notification-icon">🎉</span>
+        <span id="notificationText">Köszönjük!</span>
+    </div>
+
+    <script>
+        // Állatok adatai
+        const animals = [
+            {
+                id: 1,
+                name: "Bodri",
+                type: "Kutya",
+                age: "3 éves",
+                gender: "Kan",
+                emoji: "🐕",
+                adoptedEmoji: "🐕‍🦺",
+                description: "Bodri egy barátságos, energikus tacskó keverék. Imádja a sétákat és a labdázást.",
+                adopted: false
+            },
+            {
+                id: 2,
+                name: "Cirmi",
+                type: "Macska",
+                age: "2 éves",
+                gender: "Nőstény",
+                emoji: "🐱",
+                adoptedEmoji: "😺",
+                description: "Cirmi egy simogatni való, doromboló cica. Lakásban tartásra ideális társat keres.",
+                adopted: false
+            },
+            {
+                id: 3,
+                name: "Morzsi",
+                type: "Kutya",
+                age: "5 éves",
+                gender: "Kan",
+                emoji: "🐶",
+                adoptedEmoji: "🦮",
+                description: "Morzsi egy nyugodt, kiegyensúlyozott kutya. Gyerekekkel is kiválóan kijön.",
+                adopted: false
+            },
+            {
+                id: 4,
+                name: "Kormi",
+                type: "Macska",
+                age: "1 éves",
+                gender: "Kan",
+                emoji: "🐈",
+                adoptedEmoji: "🐈‍⬛",
+                description: "Kormi egy játékos, fiatal kandúr. Szereti a mászókát és a pihe-puha helyeket.",
+                adopted: false
+            },
+            {
+                id: 5,
+                name: "Foltos",
+                type: "Kutya",
+                age: "4 éves",
+                gender: "Nőstény",
+                emoji: "🐕",
+                adoptedEmoji: "🐩",
+                description: "Foltos egy okos, tanulékony kutyus. Már ismeri az alapvető parancsokat.",
+                adopted: false
+            },
+            {
+                id: 6,
+                name: "Pamacs",
+                type: "Nyúl",
+                age: "1 éves",
+                gender: "Nőstény",
+                emoji: "🐰",
+                adoptedEmoji: "🐇",
+                description: "Pamacs egy puha szőrű, kedves nyuszi. Csendes társat keres.",
+                adopted: false
+            }
+        ];
+
+        // Állatok megjelenítése
+        function renderAnimals() {
+            const grid = document.getElementById('animalsGrid');
+            grid.innerHTML = animals.map(animal => `
+                <div class="animal-card ${animal.adopted ? 'adopted' : ''}" id="animal-${animal.id}">
+                    <div class="animal-image">
+                        ${animal.adopted ? animal.adoptedEmoji : animal.emoji}
+                    </div>
+                    <div class="animal-info">
+                        <span class="adopted-badge">✨ Gazdira talált!</span>
+                        <h3 class="animal-name">${animal.name}</h3>
+                        <p class="animal-details">
+                            ${animal.type} • ${animal.age} • ${animal.gender}
+                        </p>
+                        <p class="animal-description">${animal.description}</p>
+                        <button 
+                            class="adopt-btn" 
+                            onclick="adoptAnimal(${animal.id})"
+                            ${animal.adopted ? 'disabled' : ''}
+                        >
+                            ${animal.adopted ? '🏠 Befogadva!' : '🐾 Örökbe fogadom'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Örökbefogadás
+        function adoptAnimal(id) {
+            const animal = animals.find(a => a.id === id);
+            if (animal && !animal.adopted) {
+                animal.adopted = true;
+                renderAnimals();
+                showNotification(`🎉 Köszönjük! ${animal.name} új gazdira talált!`);
+            }
+        }
+
+        // Értesítés megjelenítése
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notificationText');
+            text.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Támogatási gombok
+        function showDonation() {
+            showNotification('💰 Köszönjük az adományozási szándékot! Hamarosan emailben keressük.');
+        }
+
+        function showItems() {
+            showNotification('🦴 Tárgyi adományokat a nyitvatartási időben fogadunk!');
+        }
+
+        function showVolunteer() {
+            showNotification('🤝 Köszönjük a jelentkezést! Önkéntes koordinátorunk felveszi Önnel a kapcsolatot.');
+        }
+
+        function showFoster() {
+            showNotification('🏠 Köszönjük az érdeklődést! Részletes tájékoztatóért hívjon minket!');
+        }
+
+        // Oldal betöltésekor
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAnimals();
+        });
+    </script>
+</body>
+</html>
