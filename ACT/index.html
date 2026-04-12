@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menhely</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fdf6ee;
+            color: #2e1f0f;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #4a2e1a;
+            
+        }
+
+        nav {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #fdf6ee;
+            letter-spacing: 1px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            color: #fdf6ee;
+            font-size: 0.9rem;
+            font-weight: bolder;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 1.1rem;
+            border-radius: 30px;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            transition: background-color 0.6s, border-color 0.5s;
+        }
+
+        .nav-buttons a:hover {
+            background: #e07b39;
+            border-color: #e07b39;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg,#4a2e1a , #7c4f2f, #e07b39 );
+            color: #fdf6ee;
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight:lighter;
+            opacity: 0.8; /*átlátszóság*/
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* SECTIONS */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid #f0dcc8;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: #e07b39;
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight:bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #4a2e1a;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: #7a6050;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        /* RÓLUNK */
+        .rolunk-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .rolunk-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .rolunk-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .rolunk-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #4a2e1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .rolunk-card p {
+            color: #7a6050;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* ÁLLATOK */
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .animal-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(124, 79, 47, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(124, 79, 47, 0.18);
+        }
+
+        .animal-emoji {
+            font-size: 5rem;
+            background: #f5e6d3;
+            text-align: center;
+            padding: 1.8rem 0;
+        }
+
+        .animal-info {
+            padding: 1.2rem 1.4rem 1.4rem;
+        }
+
+        .animal-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #4a2e1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .animal-meta {
+            font-size: 0.82rem;
+            color: #7a6050;
+            margin-bottom: 0.8rem;
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .animal-meta span {
+            background: #f5e6d3;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        .animal-info p {
+            font-size: 0.92rem;
+            color: #5a4030;
+            line-height: 1.6;
+            margin-bottom: 1.1rem;
+        }
+
+        .btn-adopt {
+            width: 100%;
+            padding: 0.65rem;
+            background: #e07b39;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-adopt:hover {
+            background: #c06020;
+        }
+
+        .btn-adopt:disabled {
+            background: #b0998a;
+            cursor: default;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #4a2e1a;
+            margin-bottom: 0.6rem;
+        }
+
+        .modal p {
+            color: #7a6050;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-close {
+            padding: 0.6rem 2rem;
+            background: #4a2e1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* TÁMOGATÁS */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .support-card {
+            background: #4a2e1a;
+            color: #fdf6ee;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .support-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .support-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.65;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2e1f0f;
+            color: #c8aa90;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #fdf6ee;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contacts div {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .contact-label {
+            display:block ; 
+            font-weight: bold;
+            color: #e07b39;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .copy {
+            font-size: 0.78rem;
+            opacity: 0.45;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a class="logo" href="#">
+                <span class="logo-icon"><img src="logo.png" alt="Logó" srcset="">🐾</span>
+                <span class="logo-text">Menhely</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="#rolunk">Rólunk</a>
+                <a href="#animals">Állataink</a>
+                <a href="#support">Támogatás</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- bevezető -->
+    <div class="hero">
+        <h1>Minden állat számít 🐶🐱</h1>
+        <p>Segíts nekünk otthont adni a rászorulóknak — fogadj örökbe, vagy támogass minket!</p>
+    </div>
+
+    <main>
+
+        <!-- 1.section -->
+        <section id="rolunk">
+            <span class="section-label">Rólunk</span>
+            <h2 class="section-title">Kik vagyunk mi?</h2>
+            <p class="section-desc">
+                A Bundás Menhely 2010 óta nyújt biztonságos otthont a gazdájukat vesztett
+                vagy elhagyott állatoknak. Önkénteseink naponta gondoskodnak a gondjainkra bízott
+                kutyákról és macskákról, hogy minél hamarabb szerető új gazdára találjanak.
+            </p>
+            <div class="rolunk-grid">
+                <div class="rolunk-card">
+                    <div class="icon">🏠</div>
+                    <h3>Biztonságos környezet</h3>
+                    <p>Tágas kifutóink és egyedi box-aink biztosítják, hogy minden állat kényelmesen várhassa új gazdáját.</p>
+                </div>
+                <div class="rolunk-card">
+                    <div class="icon">💉</div>
+                    <h3>Állatorvosi ellátás</h3>
+                    <p>Minden befogadott állat teljes körű orvosi vizsgálaton esik át, oltásait és chipelését elvégezzük.</p>
+                </div>
+                <div class="rolunk-card">
+                    <div class="icon">🤝</div>
+                    <h3>Önkéntes csapatunk</h3>
+                    <p>Több mint 30 elkötelezett önkéntes dolgozik nap mint nap azért, hogy az állataink boldogok legyenek.</p>
+                </div>
+                <div class="rolunk-card">
+                    <div class="icon">📋</div>
+                    <h3>Gondos örökbeadás</h3>
+                    <p>Az örökbeadás előtt személyes konzultációt tartunk, hogy az állat és az új gazda valóban egymásra találjon.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.section -->
+        <section id="animals">
+            <span class="section-label">Örökbefogadás</span>
+            <h2 class="section-title">Fogadj örökbe!</h2>
+            <p class="section-desc">Ismerkedj meg állatainkkal — mindegyikük szerető otthonra vár.</p>
+            <div class="animals-grid" id="animalsGrid"></div>
+        </section>
+
+        <!-- 3.section -->
+        <section id="support">
+            <span class="section-label">Támogatás</span>
+            <h2 class="section-title">Más módon is segíthetsz</h2>
+            <p class="section-desc">Ha éppen nem tudsz állatot befogadni, többféleképpen is hozzájárulhatsz a munkánkhoz.</p>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="icon">💛</div>
+                    <h3>Pénzügyi adomány</h3>
+                    <p>Egyszeri vagy rendszeres adományoddal az állatorvosi ellátás és a takarmány költségeit fedezzük.</p>
+                </div>
+                <div class="support-card">
+                    <div class="icon">🧺</div>
+                    <h3>Tárgyi adomány</h3>
+                    <p>Fogadunk takarmányt, takarót, játékot és egyéb felszerelést. Hozd be személyesen hétköznapokon!</p>
+                </div>
+                <div class="support-card">
+                    <div class="icon">🙋</div>
+                    <h3>Önkéntesség</h3>
+                    <p>Csatlakozz csapatunkhoz! Keresünk napi gondozókat, sétáltatókat és rendezvényszervezőket.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-title">🐾 Bundás Menhely</div>
+            <div class="footer-contacts">
+                <div>
+                    <span class="contact-label">Cím</span>
+                    Liget utca 12., Mintaváros
+                </div>
+                <div>
+                    <span class="contact-label">Telefon</span>
+                    +36 20 123 4567
+                </div>
+                <div>
+                    <span class="contact-label">E-mail</span>
+                    info@bundasbaratok.hu
+                </div>
+                <div>
+                    <span class="contact-label">Nyitvatartás</span>
+                    H–P: 9:00–17:00
+                </div>
+            </div>
+            <div class="copy">© 2024 Bundás Barátok Menhely — Minden jog fenntartva.</div>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-icon" id="modalIcon">🐶</div>
+            <h3 id="modalTitle">Köszönjük!</h3>
+            <p id="modalText">Hamarosan felvesszük veled a kapcsolatot az örökbefogadás részleteiről.</p>
+            <button class="modal-close" onclick="closeModal()">Bezárás</button>
+        </div>
+    </div>
+
+    <script>
+        // Az örökbefogadható állatok adatai
+        var animals = [
+            {
+                name: "Bodri",
+                emoji: "🐕",
+                age: "3 éves",
+                type: "Kutya",
+                desc: "Bodri egy barátságos és energikus keverék, aki imád labdázni és sétálni. Gyerekekkel is jól kijön."
+            },
+            {
+                name: "Cirmi",
+                emoji: "🐈",
+                age: "2 éves",
+                type: "Macska",
+                desc: "Cirmi csöndes és szerető macska, aki egy nyugodt otthonban érzi magát a legjobban."
+            },
+            {
+                name: "Morzsi",
+                emoji: "🐩",
+                age: "5 éves",
+                type: "Kutya",
+                desc: "Morzsi egy kis termetű, szelíd kutya. Tökéletes lakástárs egyedülállóknak vagy idősebbeknek."
+            },
+            {
+                name: "Füles",
+                emoji: "🐇",
+                age: "1 éves",
+                type: "Nyúl",
+                desc: "Füles kíváncsi és játékos nyuszi. Ketrecet nem igényel, szabadon mozog a lakásban."
+            },
+            {
+                name: "Tigris",
+                emoji: "🐈‍⬛",
+                age: "4 éves",
+                type: "Macska",
+                desc: "Tigris egy bátor fekete macska. Először tartózkodó, de hamar megkedveli új gazdáját."
+            },
+            {
+                name: "Mancs",
+                emoji: "🦮",
+                age: "6 éves",
+                type: "Kutya",
+                desc: "Mancs tapasztalt és nyugodt kutya. Egy csendes, biztonságos otthonra vágyik idős korára."
+            }
+        ];
+
+        // Kártyák megjelenítése
+        var grid = document.getElementById('animalsGrid');
+
+        animals.forEach(function(animal, index) {
+            var card = document.createElement('div');
+            card.className = 'animal-card';
+            card.innerHTML =
+                '<div class="animal-emoji">' + animal.emoji + '</div>' +
+                '<div class="animal-info">' +
+                    '<h3>' + animal.name + '</h3>' +
+                    '<div class="animal-meta">' +
+                        '<span>' + animal.type + '</span>' +
+                        '<span>' + animal.age + '</span>' +
+                    '</div>' +
+                    '<p>' + animal.desc + '</p>' +
+                    '<button class="btn-adopt" id="btn-' + index + '" onclick="adopt(' + index + ')">Örökbefogadás</button>' +
+                '</div>';
+            grid.appendChild(card);
+        });
+
+        // Örökbefogadás esemény
+        function adopt(index) {
+            var animal = animals[index];
+            var btn = document.getElementById('btn-' + index);
+
+            document.getElementById('modalIcon').textContent = animal.emoji;
+            document.getElementById('modalTitle').textContent = animal.name + ' örökbefogadása';
+            document.getElementById('modalText').textContent =
+                'Köszönjük az érdeklődésed! Munkatársaink hamarosan felveszik veled a kapcsolatot ' +
+                animal.name + ' örökbefogadásának részleteiről. Kérjük, várd türelemmel hívásunkat!';
+
+            document.getElementById('modalOverlay').classList.add('active');
+
+            btn.textContent = '✓ Kérelem elküldve';
+            btn.disabled = true;
+        }
+
+        // Modal bezárása
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Modal bezárása háttérre kattintva
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

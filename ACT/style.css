@@ -1,0 +1,57 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+    --backGround:(olive);
+    --betu:(white);
+}
+
+html{
+    scroll-behavior: smooth;
+    background:var(--backGround);
+    color: var(--betu);
+}
+
+@media (max-width: 768px) {
+        nav .container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        nav a {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav button {
+            padding: 0.6rem 1rem;
+            size: 0.9rem;
+        }
+
+        section h1,h2 {
+            font-size: 2rem;
+         }       
+}
+
+nav{
+     
+    background-color:#97bc62 ;
+    position:sticky;
+    width: 100%;
+    top: 0cm;
+    z-index:1000 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+/* Hover effekt a navigációs linkekre */
+button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px); /* Kicsit felemelkedik */
+}
+
+.logo span {
+    font-size: 2rem;
+}
