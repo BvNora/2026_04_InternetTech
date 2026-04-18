@@ -1,0 +1,333 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #fdf6ee;
+    color: #2e1f0f;
+}
+/* HEADER */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #4a2e1a;
+    
+}
+nav {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+.logo-icon {
+    font-size: 1.8rem;
+}
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fdf6ee;
+    letter-spacing: 1px;
+}
+.nav-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+.nav-buttons a {
+    text-decoration: none;
+    color: #fdf6ee;
+    font-size: 0.9rem;
+    font-weight: bolder;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1.1rem;
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.6s, border-color 0.5s;
+}
+.nav-buttons a:hover {
+    background: #e07b39;
+    border-color: #e07b39;
+}
+/* HERO */
+.hero {
+    background: linear-gradient(135deg,#4a2e1a , #7c4f2f, #e07b39 );
+    color: #fdf6ee;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+}
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.hero p {
+    font-size: 1.2rem;
+    font-weight:lighter;
+    opacity: 0.8; /*átlátszóság*/
+    max-width: 1100px;
+    margin: 0 auto;
+}
+/* SECTIONS */
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #f0dcc8;
+}
+.section-label {
+    display: inline-block;
+    background: #e07b39;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight:bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    
+}
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #4a2e1a;
+    margin-bottom: 1rem;
+}
+.section-desc {
+    color: #7a6050;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 700px;
+}
+/* RÓLUNK */
+.rolunk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.rolunk-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+}
+.rolunk-card .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.rolunk-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #4a2e1a;
+    margin-bottom: 0.5rem;
+}
+.rolunk-card p {
+    color: #7a6050;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+/* ÁLLATOK */
+.animals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.animal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(124, 79, 47, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.animal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(124, 79, 47, 0.18);
+}
+.animal-emoji {
+    font-size: 5rem;
+    background: #f5e6d3;
+    text-align: center;
+    padding: 1.8rem 0;
+}
+.animal-info {
+    padding: 1.2rem 1.4rem 1.4rem;
+}
+.animal-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #4a2e1a;
+    margin-bottom: 0.3rem;
+}
+.animal-meta {
+    font-size: 0.82rem;
+    color: #7a6050;
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.6rem;
+}
+.animal-meta span {
+    background: #f5e6d3;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+}
+.animal-info p {
+    font-size: 0.92rem;
+    color: #5a4030;
+    line-height: 1.6;
+    margin-bottom: 1.1rem;
+}
+.btn-adopt {
+    width: 100%;
+    padding: 0.65rem;
+    background: #e07b39;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-adopt:hover {
+    background: #c06020;
+}
+.btn-adopt:disabled {
+    background: #b0998a;
+    cursor: default;
+}
+/* MODAL */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.active {
+    display: flex;
+}
+.modal {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+.modal-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #4a2e1a;
+    margin-bottom: 0.6rem;
+}
+.modal p {
+    color: #7a6050;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+.modal-close {
+    padding: 0.6rem 2rem;
+    background: #4a2e1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+/* TÁMOGATÁS */
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.support-card {
+    background: #4a2e1a;
+    color: #fdf6ee;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+.support-card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+.support-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+}
+.support-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.65;
+}
+/* FOOTER */
+footer {
+    background: #2e1f0f;
+    color: #c8aa90;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+.footer-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fdf6ee;
+    margin-bottom: 1.5rem;
+}
+.footer-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+.footer-contacts div {
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+.contact-label {
+    display:block ; 
+    font-weight: bold;
+    color: #e07b39;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+}
+.copy {
+    font-size: 0.78rem;
+    opacity: 0.45;
+    margin-top: 1.5rem;
+        }
+ 

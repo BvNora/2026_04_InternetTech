@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menhely</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a class="logo" href="#">
+                <span class="logo-icon"><!--<img src="logo.png" alt="Logó" >-->🐾</span>
+                <span class="logo-text">Menhely</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="#rolunk">Rólunk</a>
+                <a href="#animals">Állataink</a>
+                <a href="#support">Támogatás</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- bevezető -->
+    <div class="hero">
+        <h1>Minden állat számít 🐶🐱</h1>
+        <p>Segíts nekünk otthont adni a rászorulóknak — fogadj örökbe, vagy támogass minket!</p>
+    </div>
+
+    <main>
+
+        <!-- 1.section -->
+        <section id="rolunk">
+            <span class="section-label">Rólunk</span>
+            <h2 class="section-title">Kik vagyunk mi?</h2>
+            <p class="section-desc">
+                A Bundás Menhely 2010 óta nyújt biztonságos otthont a gazdájukat vesztett
+                vagy elhagyott állatoknak. Önkénteseink naponta gondoskodnak a gondjainkra bízott
+                kutyákról és macskákról, hogy minél hamarabb szerető új gazdára találjanak.
+            </p>
+            <div class="rolunk-grid">
+                <div class="rolunk-card">
+                    <div class="icon">🏠</div>
+                    <h3>Biztonságos környezet</h3>
+                    <p>Tágas kifutóink és egyedi box-aink biztosítják, hogy minden állat kényelmesen várhassa új gazdáját.</p>
+                </div>
+                <div class="rolunk-card">
+                    <div class="icon">💉</div>
+                    <h3>Állatorvosi ellátás</h3>
+                    <p>Minden befogadott állat teljes körű orvosi vizsgálaton esik át, oltásait és chipelését elvégezzük.</p>
+                </div>
+                <div class="rolunk-card">
+                    <div class="icon">🤝</div>
+                    <h3>Önkéntes csapatunk</h3>
+                    <p>Több mint 30 elkötelezett önkéntes dolgozik nap mint nap azért, hogy az állataink boldogok legyenek.</p>
+                </div>
+                <div class="rolunk-card">
+                    <div class="icon">📋</div>
+                    <h3>Gondos örökbeadás</h3>
+                    <p>Az örökbeadás előtt személyes konzultációt tartunk, hogy az állat és az új gazda valóban egymásra találjon.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.section -->
+        <section id="animals">
+            <span class="section-label">Örökbefogadás</span>
+            <h2 class="section-title">Fogadj örökbe!</h2>
+            <p class="section-desc">Ismerkedj meg állatainkkal — mindegyikük szerető otthonra vár.</p>
+            <div class="animals-grid" id="animalsGrid"></div>
+        </section>
+
+        <!-- 3.section -->
+        <section id="support">
+            <span class="section-label">Támogatás</span>
+            <h2 class="section-title">Más módon is segíthetsz</h2>
+            <p class="section-desc">Ha éppen nem tudsz állatot befogadni, többféleképpen is hozzájárulhatsz a munkánkhoz.</p>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="icon">💛</div>
+                    <h3>Pénzügyi adomány</h3>
+                    <p>Egyszeri vagy rendszeres adományoddal az állatorvosi ellátás és a takarmány költségeit fedezzük.</p>
+                </div>
+                <div class="support-card">
+                    <div class="icon">🧺</div>
+                    <h3>Tárgyi adomány</h3>
+                    <p>Fogadunk takarmányt, takarót, játékot és egyéb felszerelést. Hozd be személyesen hétköznapokon!</p>
+                </div>
+                <div class="support-card">
+                    <div class="icon">🙋</div>
+                    <h3>Önkéntesség</h3>
+                    <p>Csatlakozz csapatunkhoz! Keresünk napi gondozókat, sétáltatókat és rendezvényszervezőket.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-title">🐾 Bundás Menhely</div>
+            <div class="footer-contacts">
+                <div>
+                    <span class="contact-label">Cím</span>
+                    Liget utca 12., Mintaváros
+                </div>
+                <div>
+                    <span class="contact-label">Telefon</span>
+                    +36 20 123 4567
+                </div>
+                <div>
+                    <span class="contact-label">E-mail</span>
+                    info@bundasbaratok.hu
+                </div>
+                <div>
+                    <span class="contact-label">Nyitvatartás</span>
+                    H–P: 9:00–17:00
+                </div>
+            </div>
+            <div class="copy">© 2026 Bundás Menhely — Minden jog fenntartva.</div>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-icon" id="modalIcon">🐶</div>
+            <h3 id="modalTitle">Köszönjük!</h3>
+            <p id="modalText">Hamarosan felkeresünk az örökbefogadás részleteivel.</p>
+            <button class="modal-close" onclick="closeModal()">Bezárás</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
